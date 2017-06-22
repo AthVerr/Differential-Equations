@@ -1,0 +1,15 @@
+to arxeio afto einai to arxeio gnuplot, grafoume afto to arxeio sto gnuplot kai vgainei h grafikh parastash. an 8eleis na deis paradeigmata dens sto 
+http://t16web.lanl.gov/Kawano/gnuplot/intro/plotcalc-e.html. Sygkekrimena to arxeio praph_x arxika to apo8hkevoume sto fakelo ths ergasias 
+(ekei pou einai o kwdikas c me to arxeio twn grafikwn) kai periexei tis e3hs entoles 
+set title "x_exact" (o titlos ths grafikh parastash)
+set ylabel "x" (gia ton a3ona twn y)
+set xlabel "t" (gia ton a3ona twn x)
+plot "my_arxeio.dat" using 1:2 title "x_exact" with lines
+ (gia thn ektypwsh tou x, tou leme na paei sto arxeio kai na kanei se grafikh parastash thn sthlh 1 kai thn sthlh 2, dhladh to t kai to x)
+set term png(gia na apo8hkeftei h grafikh se arxeio png)
+set output "x_exact.png" (na onamstei to arxeio x_exact)
+replot (gia na 3anaginei h grafikh)
+quit
+
+_
+
