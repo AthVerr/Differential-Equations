@@ -1,0 +1,51 @@
+#include <stdio.h>		//I/O library
+#include <math.h>		//Math library
+
+#define	NDERIVS	1		//Number of derivatives
+
+
+void CalcDerivs(int numDerivs, float *x, float t, float *k1);
+void main();
+
+void CalcDerivs(int numDerivs, float *x, float t, float *k1) {
+// numDerivs is the number of derivatives to be calculated
+// x is an array containing the state variables
+// t is time
+// k1 is the array of calculated derivatives.
+
+	k1[0]=0.5-t+2*x[0];        //Calculate derivative;
+}
+
+
+void main() {
+	float yexact, ystar;			//Exact and approximate values of y
+	float x[NDERIVS], k1[NDERIVS];	//Arrays to hold state variables and derivatives.
+	float h=0.1, t=0.0, tmax=1.0;	//Step size, time, final time.
+	int i;							//loop counter
+
+
+	printf("Welcome to Euler \n");
+
+	x[0]=1;							//Initial conditions.
+	ystar=x[0];						//output is our only state variable in this case.
+
+
+	for (t=0;t<=tmax;t=t+h) {		//for loop to iterate through time.
+		CalcDerivs(NDERIVS, x, t, k1);
+
+		ystar=x[0];					//Get approx and exact y.
+		yexact=exp(2*t)+ (t/2);
+
+		//Print results.
+		printf("t=%4.2f, yexact=%6.4f, ystar=%6.4f\n",t,yexact,ystar);
+
+		for(i=0;i<NDERIVS;i++) {	//Update state variables.
+			x[i]=x[i]+h*k1[i];
+		}
+
+
+	}
+
+
+}
+

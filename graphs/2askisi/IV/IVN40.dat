@@ -1,0 +1,49 @@
+t0=0;              % Αρχική τιμή στον άξονα των t
+t1=1;              %Τελευταίο σημείο στον άξονα των t
+
+x0 = 1;            % Αρχική τιμή για t=0 που δινει η εκφώνηση(yo)
+N = 40;            %  Βήματα για την κάλυψη του δοθέντος διαστήματος με Ν=10
+
+dt = (t1-t0)/N;    %  Πλάτος βήματος(h) 
+
+x = zeros(N,1);    % Αρχικοποίηση του x
+t = zeros(N,1);    %Αρχικοποίηση του t 
+
+x(1) = x0;         %  input αρχικής συνθήκης x(1)
+t(1) = t0;         %  input αρχικής συνθήκης t(1)
+
+
+for step=1:N                                                                     % Επανάληψη για N βήματα
+x(step+1) = x(step) + dt*(((x(step))^2+2*t(step)*x(step))/(3+(t(step))^2));      % Euler που μας δίνεται 
+t(step+1) = t(step) + dt;                                                        % Αύξηση του βήματος
+end
+
+
+f=-(t.^2+3)./(t-3);   %Ακριβής λύση
+ 
+plot(t,x,'y');        % Τυπώνει την αριθμητική λύση της x
+
+hold on;         
+plot(t,f);            %Τυπώνει την γραφική παράσταση (f) ακριβούς λύσης
+legend('Approximate','Exact');
+title('Euler Approximation, N=10');
+xlabel('time');
+ylabel('x, f');
+
+
+
+% γραφηκή για σφάλμα
+
+hold off;
+error=100*abs(x-f)./f;
+plot(t,error);
+
+title('relevant percentage error')
+xlabel('time');
+ylabel('error ')
+
+%Print results
+for i=1:length(t)
+   disp(sprintf('t=%5.3f,  x(t)=%6.4f,  f(t)=%6.4f,error(t)=%6.4f',t(i),x(i),f(i),error(i)));
+end
+

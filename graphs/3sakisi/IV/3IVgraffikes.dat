@@ -1,0 +1,120 @@
+t0=0;               % Αρχική τιμή στον άξονα των t
+t1=1;              %Τελευταίο σημείο στον άξονα των t
+
+x0 = 1;            % Αρχική τιμή για t=0 που δινει η εκφώνηση(yo)
+N = 10;            %  Βήματα για την κάλυψη του δοθέντος διαστήματος με Ν=10
+
+dt = (t1-t0)/N;    %  Πλάτος βήματος(h) 
+
+x = zeros(N,1);    % Αρχικοποίηση του x
+t = zeros(N,1);    %Αρχικοποίηση του t 
+
+x(1) = x0;         %  input αρχικής συνθήκης x(1)
+t(1) = t0;         %  input αρχικής συνθήκης t(1)
+t(2)=t0+dt;
+t(N+1)=1;
+
+for step=1:N  
+
+k=((x(step))^2+2*t(step)*x(step))/(3+(t(step))^2);
+
+x(step+1) = x(step) + (dt/2)*((x(step))^2+(dt^2)*(k^2)+2*t(step+1)*x(step)+2*t(step+1)*dt*k)/(3+(t(step+1)^2));
+                                                                  
+
+t(step+1) = t(step) + dt;                                                       
+end
+
+
+f=-(t.^2+3)./(t-3);   %Ακριβής λύση 
+
+
+% γραφηκή για σφάλμα
+
+hold on;
+error=100*abs(x-f)./f;
+plot(t,error);
+
+title('relevant percentage error');
+xlabel('time');
+ylabel('error ');
+
+t0=0;               % Αρχική τιμή στον άξονα των t
+t1=1;              %Τελευταίο σημείο στον άξονα των t
+
+x0 = 1;            % Αρχική τιμή για t=0 που δινει η εκφώνηση(yo)
+N = 20;            %  Βήματα για την κάλυψη του δοθέντος διαστήματος με Ν=10
+
+dt = (t1-t0)/N;    %  Πλάτος βήματος(h) 
+
+x = zeros(N,1);    % Αρχικοποίηση του x
+t = zeros(N,1);    %Αρχικοποίηση του t 
+
+x(1) = x0;         %  input αρχικής συνθήκης x(1)
+t(1) = t0;         %  input αρχικής συνθήκης t(1)
+t(2)=t0+dt;
+t(N+1)=1;
+
+for step=1:N  
+
+k=((x(step))^2+2*t(step)*x(step))/(3+(t(step))^2);
+
+x(step+1) = x(step) + (dt/2)*((x(step))^2+(dt^2)*(k^2)+2*t(step+1)*x(step)+2*t(step+1)*dt*k)/(3+(t(step+1)^2));
+                                                                  
+
+t(step+1) = t(step) + dt;                                                       
+end
+
+
+f=-(t.^2+3)./(t-3);   %Ακριβής λύση 
+
+
+% γραφηκή για σφάλμα
+
+hold on;
+error=100*abs(x-f)./f;
+plot(t,error);
+
+title('relevant percentage error');
+xlabel('time');
+ylabel('error ');
+
+t0=0;               % Αρχική τιμή στον άξονα των t
+t1=1;              %Τελευταίο σημείο στον άξονα των t
+
+x0 = 1;            % Αρχική τιμή για t=0 που δινει η εκφώνηση(yo)
+N = 40;            %  Βήματα για την κάλυψη του δοθέντος διαστήματος με Ν=10
+
+dt = (t1-t0)/N;    %  Πλάτος βήματος(h) 
+
+x = zeros(N,1);    % Αρχικοποίηση του x
+t = zeros(N,1);    %Αρχικοποίηση του t 
+
+x(1) = x0;         %  input αρχικής συνθήκης x(1)
+t(1) = t0;         %  input αρχικής συνθήκης t(1)
+t(2)=t0+dt;
+t(N+1)=1;
+
+for step=1:N  
+
+k=((x(step))^2+2*t(step)*x(step))/(3+(t(step))^2);
+
+x(step+1) = x(step) + (dt/2)*((x(step))^2+(dt^2)*(k^2)+2*t(step+1)*x(step)+2*t(step+1)*dt*k)/(3+(t(step+1)^2));
+                                                                  
+
+t(step+1) = t(step) + dt;                                                       
+end
+
+
+f=-(t.^2+3)./(t-3);   %Ακριβής λύση 
+
+
+% γραφηκή για σφάλμα
+
+hold on;
+error=100*abs(x-f)./f;
+plot(t,error);
+
+title('relevant percentage error');
+xlabel('time');
+ylabel('error ');
+

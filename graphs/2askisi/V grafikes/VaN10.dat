@@ -1,0 +1,21 @@
+
+t0=0;
+t1=1;
+
+x0 = 0.5;;
+N = 10;
+
+dt = (t1-t0)/N;
+x = zeros(N,1); 
+t = zeros(N,1); 
+
+x(1) = x0; 
+t(1) = t0; 
+
+for step=1:N % Επανάληψη για N βήματα
+x(step+1) = x(step) + dt*((t(step))^2+(x(step))^2);     %Τύπος  Euler 
+t(step+1) = t(step) + dt;                               %Αύξηση βήματος
+end
+
+plot(t,x,'y'); 
+title('grafikes parastaseis')
